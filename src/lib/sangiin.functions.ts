@@ -229,6 +229,34 @@ export const fetchVotableBills = createServerFn({ method: "GET" }).handler(async
   }
 });
 
+// Bills for a specific Diet session number (e.g. "220").
+export const fetchBillsBySession = createServerFn({ method: "GET" })
+  .inputValidator((d: { session: string }) => d)
+  .handler(async ({ data }): Promise<{ session: string; bills: Bill[] }> => {
+    try {
+      const url = `https://www.sangiin.go.jp/japanese/joho1/kousei/gian/${data.session}/gian.htm`;
+      const res = await fetch(url, { redirect: "follow" });
+      if (!res.ok) throw new Error(`Upstream ${res.status}`);
+      const html = await res.text();
+      const bills = parseBillList(html, url);
+      return { session: data.session, bills };
+    } catch (e) {
+      console.error("fetchBillsBySession failed:", e);
+      return { session: data.session, bills: [] };
+    }
+  });
+
+// Resolves the current Diet session number (e.g. "221").
+export const fetchCurrentSession = createServerFn({ method: "GET" }).handler(async (): Promise<string> => {
+  try {
+    const url = await resolveRedirect(GIAN_URL);
+    return url.match(/\/gian\/(\d+)\//)?.[1] ?? "";
+  } catch {
+    return "";
+  }
+});
+
+
 
 export const fetchBill = createServerFn({ method: "GET" })
   .inputValidator((d: { session: string; type: string; number: string }) => d)

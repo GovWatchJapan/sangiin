@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { fetchMembers } from "@/lib/sangiin.functions";
 import { JapanTilemap } from "@/components/JapanTilemap";
 import { useI18n } from "@/lib/i18n";
 import { PREF_BY_JA } from "@/lib/prefectures";
 import { useMemo } from "react";
+
 
 const membersQO = queryOptions({
   queryKey: ["members"],
@@ -60,6 +61,25 @@ function Index() {
       </section>
 
       <JapanTilemap counts={counts} />
+
+      <section className="mt-10 max-w-2xl mx-auto">
+        <Link
+          to="/sessions"
+          className="group flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 hover:border-primary hover:bg-accent/40 transition-colors"
+        >
+          <div>
+            <div className="font-display text-lg font-semibold group-hover:text-primary">
+              {lang === "ja" ? "国会回次から法律案を見る" : "Browse bills by Diet session"}
+            </div>
+            <div className="text-xs text-muted-foreground mt-0.5">
+              {lang === "ja"
+                ? "回次を選んで、その国会で提出された法律案の一覧を表示します。"
+                : "Pick a session to see all bills submitted in that Diet."}
+            </div>
+          </div>
+          <span className="text-muted-foreground group-hover:text-primary text-xl">→</span>
+        </Link>
+      </section>
 
       {members.length === 0 ? (
         <p className="mt-10 text-center text-sm text-destructive">
