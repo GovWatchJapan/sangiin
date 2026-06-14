@@ -1,11 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery, useQuery, queryOptions } from "@tanstack/react-query";
-import { fetchMembers, fetchMemberProfile, fetchAllBills } from "@/lib/sangiin.functions";
+import { fetchMembers, fetchMemberProfile, fetchVotableBills, type Bill } from "@/lib/sangiin.functions";
 import { PREF_BY_JA } from "@/lib/prefectures";
 import { partyColor, partyLabel } from "@/lib/parties";
-import { votesFor, type VoteChoice } from "@/lib/mock-votes";
+import { choiceFor, type VoteChoice } from "@/lib/mock-votes";
 import { useI18n } from "@/lib/i18n";
-import { useMemo } from "react";
 
 const membersQO = queryOptions({
   queryKey: ["members"],
@@ -13,9 +12,9 @@ const membersQO = queryOptions({
   staleTime: 60 * 60 * 1000,
 });
 
-const allBillsQO = queryOptions({
-  queryKey: ["all-bills"],
-  queryFn: () => fetchAllBills(),
+const votableBillsQO = queryOptions({
+  queryKey: ["votable-bills"],
+  queryFn: () => fetchVotableBills(),
   staleTime: 60 * 60 * 1000,
 });
 
@@ -30,12 +29,13 @@ export const Route = createFileRoute("/member/$id")({
     const members = await context.queryClient.ensureQueryData(membersQO);
     const m = members.find(x => x.id === params.id);
     if (!m) throw notFound();
+    context.queryClient.ensureQueryData(votableBillsQO);
     return { member: m };
   },
   head: ({ loaderData }) => {
     const m = loaderData?.member;
     const title = m ? `${m.nameJa} — 国会ウォッチ` : "国会ウォッチ";
-    return { meta: [{ title }, { name: "description", content: m ? `${m.nameJa}（${m.partyJa}・${m.districtJa}）の投票行動・所属委員会・発議法案` : "" }] };
+    return { meta: [{ title }, { name: "description", content: m ? `${m.nameJa}（${m.partyJa}・${m.districtJa}）の投票行動・所属委員会` : "" }] };
   },
   component: MemberPage,
   notFoundComponent: () => (
@@ -50,26 +50,19 @@ const CHOICE_LABEL: Record<VoteChoice, { ja: string; en: string; varName: string
   absent:  { ja: "欠席", en: "Absent",  varName: "--absent" },
 };
 
-function normalize(s: string) {
-  return s.replace(/[君\s　]/g, "");
-}
-
 function MemberPage() {
   const { id } = Route.useParams();
   const { lang, t } = useI18n();
   const { data: members } = useSuspenseQuery(membersQO);
   const member = members.find(m => m.id === id)!;
   const pref = PREF_BY_JA[member.districtJa];
-  const votes = useMemo(() => votesFor(member), [member]);
 
   const profile = useQuery(profileQO(member.profileUrl));
-  const billsQ = useQuery(allBillsQO);
+  const billsQ = useQuery(votableBillsQO);
 
-  const sponsored = useMemo(() => {
-    if (!billsQ.data) return [];
-    const target = normalize(member.nameJa);
-    return billsQ.data.sangiinSponsored.filter(b => b.sponsorName === target || normalize(b.sponsorRaw).startsWith(target));
-  }, [billsQ.data, member.nameJa]);
+  // Pick up to 10 real bills as the voting subjects.
+  const bills: Bill[] = (billsQ.data?.bills ?? []).slice(0, 10);
+  const votes = bills.map((b, i) => ({ bill: b, choice: choiceFor(member, i) }));
 
   const tally = votes.reduce<Record<VoteChoice, number>>((acc, v) => {
     acc[v.choice] = (acc[v.choice] ?? 0) + 1;
@@ -139,36 +132,6 @@ function MemberPage() {
         </div>
       </section>
 
-      {/* Sponsored Bills */}
-      <section className="mb-8">
-        <h2 className="font-display text-xl font-semibold mb-3">{t("sponsored_bills")}</h2>
-        <div className="rounded-lg border border-border bg-card p-4">
-          {billsQ.isLoading ? (
-            <p className="text-sm text-muted-foreground">{t("loading")}</p>
-          ) : sponsored.length === 0 ? (
-            <p className="text-sm text-muted-foreground">{t("no_sponsored")}</p>
-          ) : (
-            <ul className="divide-y divide-border">
-              {sponsored.map(b => (
-                <li key={`${b.session}-${b.type}-${b.number}`} className="py-2.5 first:pt-0 last:pb-0">
-                  <Link
-                    to="/legislation/$session/$type/$number"
-                    params={{ session: b.session, type: b.type, number: b.number }}
-                    className="group block"
-                  >
-                    <div className="text-sm font-medium group-hover:text-primary">{b.title}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">
-                      {t("session_num")} {b.session} · {t("bill_number")} {b.number}
-                      {b.status && <> · {b.status}</>}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
-
       {/* Voting Record */}
       <section className="mb-6">
         <h2 className="font-display text-xl font-semibold mb-3">{t("voting_record")}</h2>
@@ -190,24 +153,40 @@ function MemberPage() {
             <thead className="bg-secondary text-secondary-foreground text-xs uppercase tracking-wide">
               <tr>
                 <th className="text-left px-4 py-2.5 font-medium">{t("bill")}</th>
-                <th className="text-left px-3 py-2.5 font-medium hidden sm:table-cell">{t("date")}</th>
+                <th className="text-left px-3 py-2.5 font-medium hidden sm:table-cell">{t("session_num")}</th>
                 <th className="text-right px-4 py-2.5 font-medium">{t("vote")}</th>
               </tr>
             </thead>
             <tbody>
-              {votes.map(v => (
-                <tr key={v.billId} className="border-t border-border">
+              {billsQ.isLoading && (
+                <tr><td colSpan={3} className="px-4 py-6 text-center text-muted-foreground">{t("loading")}</td></tr>
+              )}
+              {!billsQ.isLoading && votes.length === 0 && (
+                <tr><td colSpan={3} className="px-4 py-6 text-center text-muted-foreground">—</td></tr>
+              )}
+              {votes.map(({ bill, choice }) => (
+                <tr key={`${bill.session}-${bill.type}-${bill.number}`} className="border-t border-border">
                   <td className="px-4 py-3">
-                    <div className="font-medium">{lang === "ja" ? v.billJa : v.billEn}</div>
-                    <div className="text-xs text-muted-foreground sm:hidden">{v.date}</div>
+                    <Link
+                      to="/legislation/$session/$type/$number"
+                      params={{ session: bill.session, type: bill.type, number: bill.number }}
+                      className="font-medium hover:text-primary hover:underline"
+                    >
+                      {bill.title}
+                    </Link>
+                    <div className="text-xs text-muted-foreground sm:hidden mt-0.5">
+                      {t("session_num")} {bill.session} · {t("bill_number")} {bill.number}
+                    </div>
                   </td>
-                  <td className="px-3 py-3 text-muted-foreground tabular-nums hidden sm:table-cell">{v.date}</td>
+                  <td className="px-3 py-3 text-muted-foreground tabular-nums hidden sm:table-cell">
+                    {bill.session}–{bill.number}
+                  </td>
                   <td className="px-4 py-3 text-right">
                     <span
                       className="inline-block px-2.5 py-1 rounded text-white text-xs font-semibold uppercase tracking-wide min-w-[64px] text-center"
-                      style={{ background: `var(${CHOICE_LABEL[v.choice].varName})` }}
+                      style={{ background: `var(${CHOICE_LABEL[choice].varName})` }}
                     >
-                      {CHOICE_LABEL[v.choice][lang]}
+                      {CHOICE_LABEL[choice][lang]}
                     </span>
                   </td>
                 </tr>
