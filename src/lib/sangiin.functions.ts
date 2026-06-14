@@ -15,7 +15,7 @@ const LIST_URL = "https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/g
 const stripTags = (s: string) =>
   s.replace(/<br\s*\/?>/gi, " / ").replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
-function parseMembers(html: string): Member[] {
+function parseMembers(html: string, baseUrl: string): Member[] {
   const members: Member[] = [];
   // Each member row contains a profile link followed by 5 td cells.
   const rowRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
@@ -37,7 +37,7 @@ function parseMembers(html: string): Member[] {
       partyJa,
       districtJa,
       termEnd,
-      profileUrl: href.startsWith("http") ? href : `https://www.sangiin.go.jp${href}`,
+      profileUrl: new URL(href, baseUrl).href,
     });
   }
   return members;
