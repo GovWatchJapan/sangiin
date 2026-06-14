@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { fetchMembers } from "@/lib/sangiin.functions";
 import { JapanTilemap } from "@/components/JapanTilemap";
 import { useI18n } from "@/lib/i18n";
 import { PREF_BY_JA } from "@/lib/prefectures";
 import { useMemo } from "react";
+
 
 const membersQO = queryOptions({
   queryKey: ["members"],
