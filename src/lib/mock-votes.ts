@@ -1,28 +1,9 @@
-// Deterministic illustrative voting records per member. Will be replaced when
-// real plenary vote data is wired in.
+// Deterministic illustrative voting choices per member, applied to a real
+// list of bills fetched from sangiin.go.jp. Will be replaced when real
+// plenary vote data is wired in.
 import type { Member } from "./sangiin.functions";
 
 export type VoteChoice = "yea" | "nay" | "abstain" | "absent";
-export type VoteRecord = {
-  billId: string;
-  billJa: string;
-  billEn: string;
-  date: string;        // ISO
-  choice: VoteChoice;
-};
-
-const SAMPLE_BILLS: { billJa: string; billEn: string; date: string }[] = [
-  { billJa: "令和7年度予算案",                        billEn: "FY2025 General Budget",                       date: "2025-03-28" },
-  { billJa: "防衛費財源確保法案",                     billEn: "Defense Funding Source Act",                  date: "2025-04-12" },
-  { billJa: "こども・子育て支援法改正案",             billEn: "Child & Childcare Support Act Amendment",     date: "2025-05-20" },
-  { billJa: "再生可能エネルギー特別措置法改正案",     billEn: "Renewable Energy Special Measures Amendment", date: "2025-06-05" },
-  { billJa: "デジタル社会形成基本法改正案",           billEn: "Digital Society Basic Act Amendment",         date: "2024-11-18" },
-  { billJa: "経済安全保障推進法改正案",               billEn: "Economic Security Promotion Act Amendment",   date: "2024-12-04" },
-  { billJa: "労働基準法改正案",                       billEn: "Labor Standards Act Amendment",               date: "2025-02-14" },
-  { billJa: "出入国管理及び難民認定法改正案",         billEn: "Immigration Control & Refugee Act Amendment", date: "2024-10-22" },
-  { billJa: "選択的夫婦別姓関連法案",                 billEn: "Selective Separate Surnames Bill",            date: "2025-05-29" },
-  { billJa: "原子力基本法改正案",                     billEn: "Atomic Energy Basic Act Amendment",           date: "2024-09-12" },
-];
 
 // Deterministic hash from member id
 function hash(s: string): number {
@@ -31,8 +12,8 @@ function hash(s: string): number {
   return h >>> 0;
 }
 
-// Each party has a base inclination for/against each bill index — members of
-// that party tend to vote the same, with occasional defection.
+// Each party has a base inclination per bill index — members of that party
+// tend to vote the same way, with occasional defection.
 const PARTY_BIAS: Record<string, VoteChoice[]> = {
   "自民":   ["yea","yea","yea","abstain","yea","yea","abstain","yea","nay","yea"],
   "公明":   ["yea","yea","yea","yea","yea","yea","yea","abstain","yea","abstain"],
@@ -48,16 +29,12 @@ const PARTY_BIAS: Record<string, VoteChoice[]> = {
   "無所属": ["abstain","abstain","yea","yea","abstain","abstain","yea","abstain","yea","abstain"],
 };
 
-export function votesFor(member: Pick<Member, "id" | "partyJa">): VoteRecord[] {
+export function choiceFor(member: Pick<Member, "id" | "partyJa">, index: number): VoteChoice {
   const bias = PARTY_BIAS[member.partyJa] ?? PARTY_BIAS["無所属"];
+  const base = bias[index % bias.length] ?? "abstain";
   const h = hash(member.id);
-  return SAMPLE_BILLS.map((b, i) => {
-    const base = bias[i] ?? "abstain";
-    // 12% chance of defection -> swap to opposite, 8% chance absent
-    const r = ((h >> i) & 0xff) / 255;
-    let choice: VoteChoice = base;
-    if (r < 0.08) choice = "absent";
-    else if (r < 0.20) choice = base === "yea" ? "nay" : base === "nay" ? "yea" : "abstain";
-    return { billId: `b${i + 1}`, billJa: b.billJa, billEn: b.billEn, date: b.date, choice };
-  });
+  const r = ((h >> index) & 0xff) / 255;
+  if (r < 0.08) return "absent";
+  if (r < 0.20) return base === "yea" ? "nay" : base === "nay" ? "yea" : "abstain";
+  return base;
 }
