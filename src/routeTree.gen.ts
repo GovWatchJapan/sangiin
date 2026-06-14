@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MemberIdRouteImport } from './routes/member.$id'
 import { Route as DistrictSlugRouteImport } from './routes/district.$slug'
+import { Route as LegislationSessionTypeNumberRouteImport } from './routes/legislation.$session.$type.$number'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,58 @@ const DistrictSlugRoute = DistrictSlugRouteImport.update({
   path: '/district/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegislationSessionTypeNumberRoute =
+  LegislationSessionTypeNumberRouteImport.update({
+    id: '/legislation/$session/$type/$number',
+    path: '/legislation/$session/$type/$number',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/legislation/$session/$type/$number': typeof LegislationSessionTypeNumberRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/legislation/$session/$type/$number': typeof LegislationSessionTypeNumberRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/legislation/$session/$type/$number': typeof LegislationSessionTypeNumberRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/district/$slug' | '/member/$id'
+  fullPaths:
+    | '/'
+    | '/district/$slug'
+    | '/member/$id'
+    | '/legislation/$session/$type/$number'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/district/$slug' | '/member/$id'
-  id: '__root__' | '/' | '/district/$slug' | '/member/$id'
+  to:
+    | '/'
+    | '/district/$slug'
+    | '/member/$id'
+    | '/legislation/$session/$type/$number'
+  id:
+    | '__root__'
+    | '/'
+    | '/district/$slug'
+    | '/member/$id'
+    | '/legislation/$session/$type/$number'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DistrictSlugRoute: typeof DistrictSlugRoute
   MemberIdRoute: typeof MemberIdRoute
+  LegislationSessionTypeNumberRoute: typeof LegislationSessionTypeNumberRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +106,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DistrictSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legislation/$session/$type/$number': {
+      id: '/legislation/$session/$type/$number'
+      path: '/legislation/$session/$type/$number'
+      fullPath: '/legislation/$session/$type/$number'
+      preLoaderRoute: typeof LegislationSessionTypeNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +120,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DistrictSlugRoute: DistrictSlugRoute,
   MemberIdRoute: MemberIdRoute,
+  LegislationSessionTypeNumberRoute: LegislationSessionTypeNumberRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { fetchMembers } from "@/lib/sangiin.functions";
+import { useSuspenseQuery, useQuery, queryOptions } from "@tanstack/react-query";
+import { fetchMembers, fetchMemberProfile, fetchAllBills } from "@/lib/sangiin.functions";
 import { PREF_BY_JA } from "@/lib/prefectures";
 import { partyColor, partyLabel } from "@/lib/parties";
 import { votesFor, type VoteChoice } from "@/lib/mock-votes";
@@ -10,6 +10,18 @@ import { useMemo } from "react";
 const membersQO = queryOptions({
   queryKey: ["members"],
   queryFn: () => fetchMembers(),
+  staleTime: 60 * 60 * 1000,
+});
+
+const allBillsQO = queryOptions({
+  queryKey: ["all-bills"],
+  queryFn: () => fetchAllBills(),
+  staleTime: 60 * 60 * 1000,
+});
+
+const profileQO = (profileUrl: string) => queryOptions({
+  queryKey: ["member-profile", profileUrl],
+  queryFn: () => fetchMemberProfile({ data: { profileUrl } }),
   staleTime: 60 * 60 * 1000,
 });
 
@@ -23,7 +35,7 @@ export const Route = createFileRoute("/member/$id")({
   head: ({ loaderData }) => {
     const m = loaderData?.member;
     const title = m ? `${m.nameJa} — 国会ウォッチ` : "国会ウォッチ";
-    return { meta: [{ title }, { name: "description", content: m ? `${m.nameJa}（${m.partyJa}・${m.districtJa}）の投票行動` : "" }] };
+    return { meta: [{ title }, { name: "description", content: m ? `${m.nameJa}（${m.partyJa}・${m.districtJa}）の投票行動・所属委員会・発議法案` : "" }] };
   },
   component: MemberPage,
   notFoundComponent: () => (
@@ -38,6 +50,10 @@ const CHOICE_LABEL: Record<VoteChoice, { ja: string; en: string; varName: string
   absent:  { ja: "欠席", en: "Absent",  varName: "--absent" },
 };
 
+function normalize(s: string) {
+  return s.replace(/[君\s　]/g, "");
+}
+
 function MemberPage() {
   const { id } = Route.useParams();
   const { lang, t } = useI18n();
@@ -45,6 +61,15 @@ function MemberPage() {
   const member = members.find(m => m.id === id)!;
   const pref = PREF_BY_JA[member.districtJa];
   const votes = useMemo(() => votesFor(member), [member]);
+
+  const profile = useQuery(profileQO(member.profileUrl));
+  const billsQ = useQuery(allBillsQO);
+
+  const sponsored = useMemo(() => {
+    if (!billsQ.data) return [];
+    const target = normalize(member.nameJa);
+    return billsQ.data.sangiinSponsored.filter(b => b.sponsorName === target || normalize(b.sponsorRaw).startsWith(target));
+  }, [billsQ.data, member.nameJa]);
 
   const tally = votes.reduce<Record<VoteChoice, number>>((acc, v) => {
     acc[v.choice] = (acc[v.choice] ?? 0) + 1;
@@ -78,6 +103,9 @@ function MemberPage() {
             <span className="text-muted-foreground">·</span>
             <span className="text-muted-foreground text-xs">{t("term_end")} {member.termEnd}</span>
           </div>
+          {profile.data?.electionInfo && (
+            <p className="mt-1 text-xs text-muted-foreground">{profile.data.electionInfo}</p>
+          )}
           <a href={member.profileUrl} target="_blank" rel="noreferrer"
              className="mt-2 inline-block text-xs text-primary hover:underline">
             {t("view_official")} ↗
@@ -85,6 +113,63 @@ function MemberPage() {
         </div>
       </header>
 
+      {/* Committees */}
+      <section className="mb-8">
+        <h2 className="font-display text-xl font-semibold mb-3">{t("committees")}</h2>
+        <div className="rounded-lg border border-border bg-card p-4">
+          {profile.isLoading ? (
+            <p className="text-sm text-muted-foreground">{t("loading")}</p>
+          ) : profile.data && profile.data.committees.length > 0 ? (
+            <>
+              {profile.data.asOf && (
+                <p className="text-xs text-muted-foreground mb-2">{profile.data.asOf}</p>
+              )}
+              <ul className="space-y-1.5">
+                {profile.data.committees.map((c, i) => (
+                  <li key={i} className="text-sm flex items-start gap-2">
+                    <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="text-sm text-muted-foreground">{t("no_committees")}</p>
+          )}
+        </div>
+      </section>
+
+      {/* Sponsored Bills */}
+      <section className="mb-8">
+        <h2 className="font-display text-xl font-semibold mb-3">{t("sponsored_bills")}</h2>
+        <div className="rounded-lg border border-border bg-card p-4">
+          {billsQ.isLoading ? (
+            <p className="text-sm text-muted-foreground">{t("loading")}</p>
+          ) : sponsored.length === 0 ? (
+            <p className="text-sm text-muted-foreground">{t("no_sponsored")}</p>
+          ) : (
+            <ul className="divide-y divide-border">
+              {sponsored.map(b => (
+                <li key={`${b.session}-${b.type}-${b.number}`} className="py-2.5 first:pt-0 last:pb-0">
+                  <Link
+                    to="/legislation/$session/$type/$number"
+                    params={{ session: b.session, type: b.type, number: b.number }}
+                    className="group block"
+                  >
+                    <div className="text-sm font-medium group-hover:text-primary">{b.title}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {t("session_num")} {b.session} · {t("bill_number")} {b.number}
+                      {b.status && <> · {b.status}</>}
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+
+      {/* Voting Record */}
       <section className="mb-6">
         <h2 className="font-display text-xl font-semibold mb-3">{t("voting_record")}</h2>
         <div className="grid grid-cols-4 gap-2 mb-4">
@@ -133,6 +218,15 @@ function MemberPage() {
 
         <p className="mt-4 text-xs text-muted-foreground italic">{t("data_note")}</p>
       </section>
+
+      {profile.data?.careerSummary && (
+        <section className="mb-6">
+          <h2 className="font-display text-xl font-semibold mb-3">{t("career")}</h2>
+          <div className="rounded-lg border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground">
+            {profile.data.careerSummary}
+          </div>
+        </section>
+      )}
     </main>
   );
 }
