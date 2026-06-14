@@ -208,13 +208,12 @@ function parseBillDetail(html: string, base: Bill): BillDetail {
   return { ...base, kind, sponsorRaw, sponsorName, submittedDate, status, table };
 }
 
-// Fetch ALL sponsored-bill list rows (cabinet, shugiin, sangiin), expand details
-// for the sangiin-member-sponsored (参法) bills so we can attribute sponsorship.
-// Cached by React Query; expensive (~30-60 fetches) but bounded per session.
-export const fetchAllBills = createServerFn({ method: "GET" }).handler(async (): Promise<{
+// Lightweight list of bills from the current session (no detail expansion).
+// Used to populate the illustrative voting record on member pages with real
+// bills that link to legislation detail pages.
+export const fetchVotableBills = createServerFn({ method: "GET" }).handler(async (): Promise<{
   session: string;
-  bills: Bill[];                 // every bill in the listing
-  sangiinSponsored: BillDetail[]; // 参法 with sponsor info
+  bills: Bill[];
 }> => {
   try {
     const url = await resolveRedirect(GIAN_URL);
@@ -223,27 +222,13 @@ export const fetchAllBills = createServerFn({ method: "GET" }).handler(async ():
     if (!res.ok) throw new Error(`Upstream ${res.status}`);
     const html = await res.text();
     const bills = parseBillList(html, url);
-    const sangiinBills = bills.filter(b => b.type === "10");
-    const limit = 8;
-    const sangiinSponsored: BillDetail[] = [];
-    for (let i = 0; i < sangiinBills.length; i += limit) {
-      const batch = sangiinBills.slice(i, i + limit);
-      const details = await Promise.all(batch.map(async (b) => {
-        try {
-          const r = await fetch(b.meisaiUrl, { redirect: "follow" });
-          if (!r.ok) return null;
-          const h = await r.text();
-          return parseBillDetail(h, b);
-        } catch { return null; }
-      }));
-      for (const d of details) if (d) sangiinSponsored.push(d);
-    }
-    return { session, bills, sangiinSponsored };
+    return { session, bills };
   } catch (e) {
-    console.error("fetchAllBills failed:", e);
-    return { session: "", bills: [], sangiinSponsored: [] };
+    console.error("fetchVotableBills failed:", e);
+    return { session: "", bills: [] };
   }
 });
+
 
 export const fetchBill = createServerFn({ method: "GET" })
   .inputValidator((d: { session: string; type: string; number: string }) => d)
