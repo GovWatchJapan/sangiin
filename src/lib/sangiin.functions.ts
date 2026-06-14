@@ -61,7 +61,7 @@ export const fetchMembers = createServerFn({ method: "GET" }).handler(async (): 
     const res = await fetch(url, { redirect: "follow" });
     if (!res.ok) throw new Error(`Upstream ${res.status}`);
     const html = await res.text();
-    const members = parseMembers(html);
+    const members = parseMembers(html, url);
     if (members.length === 0) throw new Error("Parsed zero members; HTML format may have changed.");
     return members;
   } catch (e) {
