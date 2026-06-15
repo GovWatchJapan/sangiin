@@ -1,21 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { fetchMembers } from "@/lib/sangiin.functions";
+import { loadDataset } from "@/lib/data";
 import { PREF_BY_SLUG } from "@/lib/prefectures";
 import { partyColor, partyLabel } from "@/lib/parties";
 import { useI18n } from "@/lib/i18n";
 
-const membersQO = queryOptions({
-  queryKey: ["members"],
-  queryFn: () => fetchMembers(),
-  staleTime: 60 * 60 * 1000,
-});
-
 export const Route = createFileRoute("/district/$slug")({
-  loader: async ({ context, params }) => {
+  loader: ({ params }) => {
     if (!PREF_BY_SLUG[params.slug]) throw notFound();
-    await context.queryClient.ensureQueryData(membersQO);
     return { slug: params.slug };
   },
   head: ({ params }) => {
@@ -32,17 +25,18 @@ export const Route = createFileRoute("/district/$slug")({
 function DistrictPage() {
   const { slug } = Route.useParams();
   const { lang, t } = useI18n();
-  const { data: members } = useSuspenseQuery(membersQO);
+  const { data, isLoading } = useQuery({ queryKey: ["dataset"], queryFn: loadDataset, staleTime: Infinity });
   const pref = PREF_BY_SLUG[slug]!;
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
+    const members = data?.members ?? [];
     const targetJa = pref.slug === "hirei" ? "比例" : pref.ja;
-    const list = members.filter(m => m.districtJa === targetJa);
+    const list = members.filter((m) => m.districtJa === targetJa || (pref.slug !== "hirei" && m.districtJa.includes(pref.ja)));
     const q = query.trim();
     if (!q) return list;
-    return list.filter(m => m.nameJa.includes(q) || m.nameKana.includes(q));
-  }, [members, pref, query]);
+    return list.filter((m) => m.nameJa.includes(q));
+  }, [data, pref, query]);
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 sm:py-12">
@@ -72,11 +66,13 @@ function DistrictPage() {
         />
       </header>
 
-      {filtered.length === 0 ? (
+      {isLoading ? (
+        <p className="text-muted-foreground text-center py-12">{t("loading")}</p>
+      ) : filtered.length === 0 ? (
         <p className="text-muted-foreground text-center py-12">{t("no_members")}</p>
       ) : (
         <ul className="grid sm:grid-cols-2 gap-3">
-          {filtered.map(m => (
+          {filtered.map((m) => (
             <li key={m.id}>
               <Link
                 to="/member/$id"
@@ -92,12 +88,11 @@ function DistrictPage() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="font-display text-lg font-semibold truncate">{m.nameJa}</div>
-                  <div className="text-xs text-muted-foreground truncate">{m.nameKana}</div>
                   <div className="mt-1 flex items-center gap-2 text-xs">
                     <span className="px-1.5 py-0.5 rounded text-white font-medium" style={{ background: partyColor(m.partyJa) }}>
                       {partyLabel(m.partyJa, lang)}
                     </span>
-                    <span className="text-muted-foreground">{t("term_end")}: {m.termEnd}</span>
+                    {m.termEnd && <span className="text-muted-foreground">{t("term_end")}: {m.termEnd}</span>}
                   </div>
                 </div>
                 <span className="text-muted-foreground group-hover:text-primary transition-colors">→</span>
