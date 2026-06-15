@@ -1,13 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { loadDataset, AVAILABLE_SESSIONS } from "@/lib/data";
+import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { fetchCurrentSession } from "@/lib/sangiin.functions";
 import { useI18n } from "@/lib/i18n";
 
+const currentSessionQO = queryOptions({
+  queryKey: ["current-session"],
+  queryFn: () => fetchCurrentSession(),
+  staleTime: 60 * 60 * 1000,
+});
+
 export const Route = createFileRoute("/sessions/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(currentSessionQO),
   head: () => ({
     meta: [
       { title: "国会回次一覧 — 国会ウォッチ" },
-      { name: "description", content: "Browse votes by Diet session" },
+      { name: "description", content: "Browse bills by Diet session / 国会回次から法律案を閲覧" },
     ],
   }),
   component: SessionsIndex,
@@ -15,8 +22,10 @@ export const Route = createFileRoute("/sessions/")({
 
 function SessionsIndex() {
   const { lang, t } = useI18n();
-  const { data } = useQuery({ queryKey: ["dataset"], queryFn: loadDataset, staleTime: Infinity });
-  const sessions = data?.sessions?.length ? data.sessions : [...AVAILABLE_SESSIONS];
+  const { data: current } = useSuspenseQuery(currentSessionQO);
+  const currentNum = parseInt(current || "221", 10) || 221;
+  // List the current session and several previous ones.
+  const sessions = Array.from({ length: 10 }, (_, i) => currentNum - i);
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-10 sm:py-14">
@@ -28,18 +37,18 @@ function SessionsIndex() {
           {lang === "ja" ? "国会回次" : "Diet Sessions"}
         </p>
         <h1 className="font-display text-3xl sm:text-4xl font-bold leading-tight">
-          {lang === "ja" ? "回次を選んで本会議投票を見る" : "Pick a session to browse votes"}
+          {lang === "ja" ? "回次を選んで法律案を見る" : "Pick a session to browse bills"}
         </h1>
         <p className="mt-3 text-sm text-muted-foreground">
           {lang === "ja"
-            ? "各回次の参議院本会議における投票記録を一覧表示します。"
-            : "Shows the list of plenary votes in that Diet session of the House of Councillors."}
+            ? "各回次の参議院に提出された法律案の一覧を表示します。"
+            : "Shows the list of bills submitted to the House of Councillors in that Diet session."}
         </p>
       </header>
 
       <ul className="grid sm:grid-cols-2 gap-3">
         {sessions.map((n) => {
-          const count = data?.billsBySession.get(n)?.length ?? 0;
+          const isCurrent = String(n) === current;
           return (
             <li key={n}>
               <Link
@@ -51,9 +60,9 @@ function SessionsIndex() {
                   <div className="font-display text-lg font-semibold">
                     {lang === "ja" ? `第${n}回国会` : `Session ${n}`}
                   </div>
-                  {count > 0 && (
-                    <div className="text-[0.7rem] text-muted-foreground mt-0.5 tabular-nums">
-                      {count} {lang === "ja" ? "件の投票" : "votes"}
+                  {isCurrent && (
+                    <div className="text-[0.7rem] text-primary uppercase tracking-wide mt-0.5">
+                      {lang === "ja" ? "現在の国会" : "Current"}
                     </div>
                   )}
                 </div>

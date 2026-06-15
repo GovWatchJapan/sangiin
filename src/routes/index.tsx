@@ -1,10 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
-import { loadDataset } from "@/lib/data";
+import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { fetchMembers } from "@/lib/sangiin.functions";
 import { JapanTilemap } from "@/components/JapanTilemap";
 import { useI18n } from "@/lib/i18n";
 import { PREF_BY_JA } from "@/lib/prefectures";
+import { useMemo } from "react";
+
+
+const membersQO = queryOptions({
+  queryKey: ["members"],
+  queryFn: () => fetchMembers(),
+  staleTime: 60 * 60 * 1000,
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -13,13 +20,13 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "都道府県の選挙区を選んで参議院議員の投票行動を確認できます。Click a prefecture to see councillors and their votes." },
     ],
   }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(membersQO),
   component: Index,
 });
 
 function Index() {
   const { t, lang } = useI18n();
-  const { data, isLoading } = useQuery({ queryKey: ["dataset"], queryFn: loadDataset, staleTime: Infinity });
-  const members = data?.members ?? [];
+  const { data: members } = useSuspenseQuery(membersQO);
 
   const counts = useMemo(() => {
     const m: Record<string, number> = {};
@@ -62,23 +69,23 @@ function Index() {
         >
           <div>
             <div className="font-display text-lg font-semibold group-hover:text-primary">
-              {lang === "ja" ? "国会回次から議案を見る" : "Browse votes by Diet session"}
+              {lang === "ja" ? "国会回次から法律案を見る" : "Browse bills by Diet session"}
             </div>
             <div className="text-xs text-muted-foreground mt-0.5">
               {lang === "ja"
-                ? "回次を選んで、その国会の本会議投票記録を一覧表示します。"
-                : "Pick a session to see the plenary votes held in that Diet."}
+                ? "回次を選んで、その国会で提出された法律案の一覧を表示します。"
+                : "Pick a session to see all bills submitted in that Diet."}
             </div>
           </div>
           <span className="text-muted-foreground group-hover:text-primary text-xl">→</span>
         </Link>
       </section>
 
-      {isLoading ? (
-        <p className="mt-10 text-center text-sm text-muted-foreground">{t("loading")}</p>
-      ) : members.length === 0 ? (
+      {members.length === 0 ? (
         <p className="mt-10 text-center text-sm text-destructive">
-          {lang === "ja" ? "データを読み込めませんでした。" : "Could not load data."}
+          {lang === "ja"
+            ? "参議院サイトからデータを取得できませんでした。時間をおいて再度お試しください。"
+            : "Could not fetch data from sangiin.go.jp. Please try again later."}
         </p>
       ) : (
         <section className="mt-16 grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-center">
@@ -103,8 +110,9 @@ function Index() {
         <p>{t("about_body")}</p>
         <p className="mt-2">
           {t("source")}:{" "}
-          <a href="https://github.com/GovWatchJapan/congressdata" className="underline hover:text-primary" target="_blank" rel="noreferrer">
-            GovWatchJapan/congressdata
+          <a href="https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giin.htm"
+             className="underline hover:text-primary" target="_blank" rel="noreferrer">
+            sangiin.go.jp
           </a>
         </p>
       </footer>
