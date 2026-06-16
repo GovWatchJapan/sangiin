@@ -45,11 +45,11 @@ export const PREFECTURES: Prefecture[] = [
   { slug: "kanagawa",  ja: "神奈川", en: "Kanagawa",  region: "kanto",    x: 10, y: 7 },
   { slug: "ehime",     ja: "愛媛",   en: "Ehime",     region: "shikoku",  x: 2,  y: 8 },
   { slug: "kagawa",    ja: "香川",   en: "Kagawa",    region: "shikoku",  x: 3,  y: 8 },
-  { slug: "tokushima", ja: "徳島",   en: "Tokushima", region: "shikoku",  x: 4,  y: 8 },
+  { slug: "tokushima", ja: "徳島",   en: "Tokushima", region: "shikoku",  x: 4,  y: 9 },
   { slug: "wakayama",  ja: "和歌山", en: "Wakayama",  region: "kansai",   x: 5,  y: 8 },
   { slug: "nara",      ja: "奈良",   en: "Nara",      region: "kansai",   x: 6,  y: 8 },
   { slug: "mie",       ja: "三重",   en: "Mie",       region: "kansai",   x: 7,  y: 8 },
-  { slug: "osaka",     ja: "大阪",   en: "Osaka",     region: "kansai",   x: 4,  y: 9 },
+  { slug: "osaka",     ja: "大阪",   en: "Osaka",     region: "kansai",   x: 4,  y: 8 },
   { slug: "kochi",     ja: "高知",   en: "Kochi",     region: "shikoku",  x: 3,  y: 9 },
   { slug: "fukuoka",   ja: "福岡",   en: "Fukuoka",   region: "kyushu",   x: 1,  y: 9 },
   { slug: "oita",      ja: "大分",   en: "Oita",      region: "kyushu",   x: 2,  y: 9 },
@@ -59,7 +59,7 @@ export const PREFECTURES: Prefecture[] = [
   { slug: "miyazaki",  ja: "宮崎",   en: "Miyazaki",  region: "kyushu",   x: 2,  y: 10 },
   { slug: "kagoshima", ja: "鹿児島", en: "Kagoshima", region: "kyushu",   x: 1,  y: 11 },
   { slug: "okinawa",   ja: "沖縄",   en: "Okinawa",   region: "kyushu",   x: 4,  y: 11 },
-  { slug: "hirei",     ja: "比例",   en: "Proportional", region: "proportional", x: 0,  y: 0 },
+  { slug: "hirei",     ja: "比例",   en: "Proportional", region: "proportional", x: 0,  y: 5 },
 ];
 
 export const PREF_BY_SLUG: Record<string, Prefecture> = Object.fromEntries(PREFECTURES.map(p => [p.slug, p]));
