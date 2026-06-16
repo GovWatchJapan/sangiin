@@ -24,12 +24,17 @@ function Index() {
   const counts = useMemo(() => {
     const m: Record<string, number> = {};
     for (const x of members) {
-      const pref = PREF_BY_JA[x.districtJa];
-      const slug = pref?.slug ?? (x.districtJa === "比例" ? "hirei" : null);
-      if (slug) m[slug] = (m[slug] ?? 0) + 1;
+      // District cell may list multiple prefectures joined by "・" (e.g. 鳥取・島根)
+      const parts = x.districtJa.split("・").map(s => s.trim()).filter(Boolean);
+      for (const part of parts) {
+        const pref = PREF_BY_JA[part];
+        const slug = pref?.slug ?? (part === "比例" ? "hirei" : null);
+        if (slug) m[slug] = (m[slug] ?? 0) + 1;
+      }
     }
     return m;
   }, [members]);
+
 
   const partyCounts = useMemo(() => {
     const m: Record<string, number> = {};

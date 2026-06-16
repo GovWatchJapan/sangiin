@@ -167,27 +167,17 @@ export function loadDataset(): Promise<Dataset> {
       allVotes.push(...r.votes);
     }
 
-    // Merge members across sessions. Prefer entry with most metadata
-    // (profile URL, district). AVAILABLE_SESSIONS is ordered newest first
-    // so the first occurrence usually wins; still upgrade if a later
-    // session has richer data for the same id.
+    // Only show members from the latest session (largest session number).
+    // Older session CSVs are still parsed so historical votes/bills are
+    // available, but the canonical roster is the most recent one.
+    const latestIdx = AVAILABLE_SESSIONS
+      .map((s, i) => ({ s: parseInt(s, 10), i }))
+      .sort((a, b) => b.s - a.s)[0]?.i ?? 0;
     const memberMap = new Map<string, Member>();
-    for (const r of results) {
-      for (const m of r.members) {
-        const prev = memberMap.get(m.id);
-        if (!prev) {
-          memberMap.set(m.id, m);
-        } else {
-          memberMap.set(m.id, {
-            ...prev,
-            districtJa: prev.districtJa || m.districtJa,
-            termEnd: prev.termEnd || m.termEnd,
-            profileUrl: prev.profileUrl || m.profileUrl,
-            partyJa: prev.partyJa || m.partyJa,
-          });
-        }
-      }
+    for (const m of results[latestIdx]?.members ?? []) {
+      memberMap.set(m.id, m);
     }
+
 
     const bills = Array.from(billMap.values()).sort((a, b) =>
       (b.dateKey || b.id).localeCompare(a.dateKey || a.id),

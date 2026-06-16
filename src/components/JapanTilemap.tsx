@@ -39,10 +39,11 @@ export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
                 {isHirei ? t("proportional") : (lang === "ja" ? p.ja : p.en)}
               </span>
               {counts && counts[p.slug] != null && (
-                <span className="absolute bottom-0.5 right-1 text-[0.55rem] tabular-nums opacity-70">
+                <span className="absolute bottom-0.5 right-1 text-[0.7rem] sm:text-xs font-semibold tabular-nums text-foreground/80">
                   {counts[p.slug]}
                 </span>
               )}
+
             </Link>
           );
         })}
