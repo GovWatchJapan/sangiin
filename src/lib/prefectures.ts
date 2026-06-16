@@ -58,7 +58,7 @@ export const PREFECTURES: Prefecture[] = [
   { slug: "kumamoto",  ja: "熊本",   en: "Kumamoto",  region: "kyushu",   x: 1,  y: 10 },
   { slug: "miyazaki",  ja: "宮崎",   en: "Miyazaki",  region: "kyushu",   x: 2,  y: 10 },
   { slug: "kagoshima", ja: "鹿児島", en: "Kagoshima", region: "kyushu",   x: 1,  y: 11 },
-  { slug: "okinawa",   ja: "沖縄",   en: "Okinawa",   region: "kyushu",   x: 0,  y: 11 },
+  { slug: "okinawa",   ja: "沖縄",   en: "Okinawa",   region: "kyushu",   x: 4,  y: 11 },
   { slug: "hirei",     ja: "比例",   en: "Proportional", region: "proportional", x: 0,  y: 0 },
 ];
 
