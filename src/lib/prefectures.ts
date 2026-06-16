@@ -45,7 +45,7 @@ export const PREFECTURES: Prefecture[] = [
   { slug: "kanagawa",  ja: "神奈川", en: "Kanagawa",  region: "kanto",    x: 10, y: 7 },
   { slug: "ehime",     ja: "愛媛",   en: "Ehime",     region: "shikoku",  x: 2,  y: 8 },
   { slug: "kagawa",    ja: "香川",   en: "Kagawa",    region: "shikoku",  x: 3,  y: 8 },
-  { slug: "tokushima", ja: "徳島",   en: "Tokushima", region: "shikoku",  x: 4,  y: 8 },
+  { slug: "tokushima", ja: "徳島",   en: "Tokushima", region: "shikoku",  x: 4,  y: 9 },
   { slug: "wakayama",  ja: "和歌山", en: "Wakayama",  region: "kansai",   x: 5,  y: 8 },
   { slug: "nara",      ja: "奈良",   en: "Nara",      region: "kansai",   x: 6,  y: 8 },
   { slug: "mie",       ja: "三重",   en: "Mie",       region: "kansai",   x: 7,  y: 8 },
