@@ -27,10 +27,10 @@ export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
               key={p.slug}
               to="/district/$slug"
               params={{ slug: p.slug }}
-              className={`group relative flex items-center justify-center rounded-md text-[0.65rem] sm:text-xs font-medium text-foreground/90 hover:text-foreground hover:ring-2 hover:ring-primary hover:scale-[1.06] transition-all shadow-sm ${isHirei ? "ring-1 ring-primary/60 ring-dashed" : ""}`}
+              className={`group relative flex items-center justify-center rounded-md text-[0.65rem] sm:text-xs font-medium text-foreground/90 hover:text-foreground hover:ring-2 hover:ring-primary hover:scale-[1.06] transition-all shadow-sm ${isHirei ? "ring-1 ring-primary/60 ring-dashed text-sm sm:text-base" : ""}`}
               style={{
-                gridColumn: p.x + 1,
-                gridRow: p.y + 1,
+                gridColumn: isHirei ? `${p.x + 1} / span 2` : p.x + 1,
+                gridRow: isHirei ? `${p.y + 1} / span 2` : p.y + 1,
                 background: REGION_COLOR[p.region],
               }}
               title={isHirei ? t("proportional") : `${p.ja} / ${p.en}`}
