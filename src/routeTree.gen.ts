@@ -15,6 +15,7 @@ import { Route as VoteIdRouteImport } from './routes/vote.$id'
 import { Route as SessionsSessionRouteImport } from './routes/sessions.$session'
 import { Route as MemberIdRouteImport } from './routes/member.$id'
 import { Route as DistrictSlugRouteImport } from './routes/district.$slug'
+import { Route as PartySlugRouteImport } from './routes/party.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,10 +47,16 @@ const DistrictSlugRoute = DistrictSlugRouteImport.update({
   path: '/district/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartySlugRoute = PartySlugRouteImport.update({
+  id: '/party/$slug',
+  path: '/party/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
+  '/party/$slug': typeof PartySlugRoute
   '/member/$id': typeof MemberIdRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
+  '/party/$slug': typeof PartySlugRoute
   '/member/$id': typeof MemberIdRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
+  '/party/$slug': typeof PartySlugRoute
   '/member/$id': typeof MemberIdRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/district/$slug'
+    | '/party/$slug'
     | '/member/$id'
     | '/sessions/$session'
     | '/vote/$id'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/district/$slug'
+    | '/party/$slug'
     | '/member/$id'
     | '/sessions/$session'
     | '/vote/$id'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/district/$slug'
+    | '/party/$slug'
     | '/member/$id'
     | '/sessions/$session'
     | '/vote/$id'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DistrictSlugRoute: typeof DistrictSlugRoute
+  PartySlugRoute: typeof PartySlugRoute
   MemberIdRoute: typeof MemberIdRoute
   SessionsSessionRoute: typeof SessionsSessionRoute
   VoteIdRoute: typeof VoteIdRoute
@@ -152,12 +165,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DistrictSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/party/$slug': {
+      id: '/party/$slug'
+      path: '/party/$slug'
+      fullPath: '/party/$slug'
+      preLoaderRoute: typeof PartySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DistrictSlugRoute: DistrictSlugRoute,
+  PartySlugRoute: PartySlugRoute,
   MemberIdRoute: MemberIdRoute,
   SessionsSessionRoute: SessionsSessionRoute,
   VoteIdRoute: VoteIdRoute,
