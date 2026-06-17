@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SessionsIndexRouteImport } from './routes/sessions.index'
 import { Route as VoteIdRouteImport } from './routes/vote.$id'
 import { Route as SessionsSessionRouteImport } from './routes/sessions.$session'
+import { Route as PartySlugRouteImport } from './routes/party.$slug'
 import { Route as MemberIdRouteImport } from './routes/member.$id'
 import { Route as DistrictSlugRouteImport } from './routes/district.$slug'
 
@@ -36,6 +37,11 @@ const SessionsSessionRoute = SessionsSessionRouteImport.update({
   path: '/sessions/$session',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartySlugRoute = PartySlugRouteImport.update({
+  id: '/party/$slug',
+  path: '/party/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MemberIdRoute = MemberIdRouteImport.update({
   id: '/member/$id',
   path: '/member/$id',
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/party/$slug': typeof PartySlugRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
   '/sessions/': typeof SessionsIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/party/$slug': typeof PartySlugRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
   '/sessions': typeof SessionsIndexRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
+  '/party/$slug': typeof PartySlugRoute
   '/sessions/$session': typeof SessionsSessionRoute
   '/vote/$id': typeof VoteIdRoute
   '/sessions/': typeof SessionsIndexRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/district/$slug'
     | '/member/$id'
+    | '/party/$slug'
     | '/sessions/$session'
     | '/vote/$id'
     | '/sessions/'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/district/$slug'
     | '/member/$id'
+    | '/party/$slug'
     | '/sessions/$session'
     | '/vote/$id'
     | '/sessions'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/district/$slug'
     | '/member/$id'
+    | '/party/$slug'
     | '/sessions/$session'
     | '/vote/$id'
     | '/sessions/'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DistrictSlugRoute: typeof DistrictSlugRoute
   MemberIdRoute: typeof MemberIdRoute
+  PartySlugRoute: typeof PartySlugRoute
   SessionsSessionRoute: typeof SessionsSessionRoute
   VoteIdRoute: typeof VoteIdRoute
   SessionsIndexRoute: typeof SessionsIndexRoute
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SessionsSessionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/party/$slug': {
+      id: '/party/$slug'
+      path: '/party/$slug'
+      fullPath: '/party/$slug'
+      preLoaderRoute: typeof PartySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/member/$id': {
       id: '/member/$id'
       path: '/member/$id'
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DistrictSlugRoute: DistrictSlugRoute,
   MemberIdRoute: MemberIdRoute,
+  PartySlugRoute: PartySlugRoute,
   SessionsSessionRoute: SessionsSessionRoute,
   VoteIdRoute: VoteIdRoute,
   SessionsIndexRoute: SessionsIndexRoute,
