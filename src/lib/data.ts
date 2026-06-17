@@ -43,7 +43,7 @@ export type Dataset = {
 
 // Sessions whose CSVs are bundled. To add more, drop a file in
 // public/data/votes_{session}.csv and append the number here.
-export const AVAILABLE_SESSIONS = ["219", "217", "214"] as const;
+export const AVAILABLE_SESSIONS = ["221","219", "217", "214"] as const;
 
 function csvUrl(session: string): string {
   const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
