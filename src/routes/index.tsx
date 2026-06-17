@@ -5,6 +5,7 @@ import { loadDataset } from "@/lib/data";
 import { JapanTilemap } from "@/components/JapanTilemap";
 import { useI18n } from "@/lib/i18n";
 import { PREF_BY_JA } from "@/lib/prefectures";
+import { partyColor, partyLabel } from "@/lib/parties";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -95,9 +96,22 @@ function Index() {
             <div className="text-xs text-muted-foreground mb-2">{t("parties_breakdown")}</div>
             <div className="flex flex-wrap gap-1.5">
               {partyCounts.map(([p, n]) => (
-                <span key={p} className="text-xs bg-secondary px-2 py-1 rounded">
-                  <strong>{p}</strong> <span className="text-muted-foreground tabular-nums">{n}</span>
-                </span>
+                <Link
+                  key={p}
+                  to="/party/$slug"
+                  params={{ slug: encodeURIComponent(p) }}
+                  className="group inline-flex items-center gap-1.5 text-xs rounded px-2 py-1 border border-border bg-card hover:bg-accent/40 hover:border-primary transition-colors"
+                  style={{ borderLeft: `3px solid ${partyColor(p)}` }}
+                  aria-label={`${partyLabel(p, lang)} (${n})`}
+                >
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ background: partyColor(p) }}
+                    aria-hidden
+                  />
+                  <strong className="group-hover:text-primary">{partyLabel(p, lang)}</strong>
+                  <span className="text-muted-foreground tabular-nums">{n}</span>
+                </Link>
               ))}
             </div>
           </div>
