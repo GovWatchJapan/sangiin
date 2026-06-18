@@ -126,7 +126,7 @@ function VotePage() {
               <thead className="bg-secondary text-secondary-foreground uppercase tracking-wide">
                 <tr>
                   <th className="text-left px-3 py-2 font-medium">{t("party")}</th>
-                  {ORDER.map((c) => (
+                  {BREAKDOWN_ORDER.map((c) => (
                     <th key={c} className="text-right px-2 py-2 font-medium" style={{ color: `var(${CHOICE_LABEL[c].varName})` }}>
                       {CHOICE_LABEL[c][lang]}
                     </th>
@@ -140,7 +140,7 @@ function VotePage() {
                       <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle" style={{ background: partyColor(party) }} />
                       {partyLabel(party, lang)}
                     </td>
-                    {ORDER.map((c) => (
+                    {BREAKDOWN_ORDER.map((c) => (
                       <td key={c} className="px-2 py-2 text-right tabular-nums">{counts[c] || ""}</td>
                     ))}
                   </tr>
