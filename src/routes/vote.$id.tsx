@@ -21,6 +21,7 @@ const CHOICE_LABEL: Record<VoteChoice, { ja: string; en: string; varName: string
 };
 
 const ORDER: VoteChoice[] = ["yea", "nay", "abstain", "absent", "standing"];
+const BREAKDOWN_ORDER: VoteChoice[] = ["yea", "nay", "abstain"];
 
 function VotePage() {
   const { id } = Route.useParams();
@@ -106,8 +107,8 @@ function VotePage() {
       {/* Tally */}
       <section className="mb-8">
         <h2 className="font-display text-xl font-semibold mb-3">{t("vote_breakdown")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
-          {ORDER.map((c) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
+          {BREAKDOWN_ORDER.map((c) => (
             <div key={c} className="rounded-md border border-border bg-card p-3 text-center">
               <div className="text-2xl font-display font-bold tabular-nums" style={{ color: `var(${CHOICE_LABEL[c].varName})` }}>
                 {tally[c]}
@@ -125,7 +126,7 @@ function VotePage() {
               <thead className="bg-secondary text-secondary-foreground uppercase tracking-wide">
                 <tr>
                   <th className="text-left px-3 py-2 font-medium">{t("party")}</th>
-                  {ORDER.map((c) => (
+                  {BREAKDOWN_ORDER.map((c) => (
                     <th key={c} className="text-right px-2 py-2 font-medium" style={{ color: `var(${CHOICE_LABEL[c].varName})` }}>
                       {CHOICE_LABEL[c][lang]}
                     </th>
@@ -139,7 +140,7 @@ function VotePage() {
                       <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle" style={{ background: partyColor(party) }} />
                       {partyLabel(party, lang)}
                     </td>
-                    {ORDER.map((c) => (
+                    {BREAKDOWN_ORDER.map((c) => (
                       <td key={c} className="px-2 py-2 text-right tabular-nums">{counts[c] || ""}</td>
                     ))}
                   </tr>
