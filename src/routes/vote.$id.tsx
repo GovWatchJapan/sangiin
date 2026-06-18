@@ -107,8 +107,8 @@ function VotePage() {
       {/* Tally */}
       <section className="mb-8">
         <h2 className="font-display text-xl font-semibold mb-3">{t("vote_breakdown")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
-          {ORDER.map((c) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
+          {BREAKDOWN_ORDER.map((c) => (
             <div key={c} className="rounded-md border border-border bg-card p-3 text-center">
               <div className="text-2xl font-display font-bold tabular-nums" style={{ color: `var(${CHOICE_LABEL[c].varName})` }}>
                 {tally[c]}
