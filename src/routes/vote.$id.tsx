@@ -21,6 +21,7 @@ const CHOICE_LABEL: Record<VoteChoice, { ja: string; en: string; varName: string
 };
 
 const ORDER: VoteChoice[] = ["yea", "nay", "abstain", "absent", "standing"];
+const BREAKDOWN_ORDER: VoteChoice[] = ["yea", "nay", "abstain"];
 
 function VotePage() {
   const { id } = Route.useParams();
