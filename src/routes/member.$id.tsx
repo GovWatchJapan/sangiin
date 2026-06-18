@@ -44,6 +44,38 @@ function MemberPage() {
     return t;
   }, [votes]);
 
+  // Outlier votes: bills where this member voted differently from their party's majority.
+  // Only counts substantive choices (yea/nay/abstain), needs party with >=3 voters
+  // on the bill, and a clear majority (>50%).
+  const outliers = useMemo(() => {
+    if (!data || !member) return [] as Array<{ bill: typeof votes[number]["bill"]; choice: VoteChoice; partyChoice: VoteChoice; partyShare: string }>;
+    const partyMembers = data.members.filter((m) => m.partyJa === member.partyJa);
+    const SUBSTANTIVE: VoteChoice[] = ["yea", "nay", "abstain"];
+    const out: Array<{ bill: typeof votes[number]["bill"]; choice: VoteChoice; partyChoice: VoteChoice; partyShare: string }> = [];
+    for (const { bill, choice } of votes) {
+      if (!SUBSTANTIVE.includes(choice)) continue;
+      const counts: Record<VoteChoice, number> = { yea: 0, nay: 0, abstain: 0, absent: 0, standing: 0 };
+      let total = 0;
+      for (const pm of partyMembers) {
+        if (pm.id === member.id) continue;
+        const c = data.voteIndex.get(pm.id)?.get(bill.id);
+        if (!c || !SUBSTANTIVE.includes(c)) continue;
+        counts[c]++;
+        total++;
+      }
+      if (total < 3) continue;
+      let topChoice: VoteChoice = "yea";
+      let topCount = -1;
+      for (const c of SUBSTANTIVE) {
+        if (counts[c] > topCount) { topCount = counts[c]; topChoice = c; }
+      }
+      if (topCount / total <= 0.5) continue;
+      if (topChoice === choice) continue;
+      out.push({ bill, choice, partyChoice: topChoice, partyShare: `${topCount}/${total}` });
+    }
+    return out;
+  }, [data, member, votes]);
+
   if (isLoading) {
     return <main className="max-w-3xl mx-auto p-10 text-center text-muted-foreground">{t("loading")}</main>;
   }
