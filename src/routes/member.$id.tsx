@@ -124,6 +124,59 @@ function MemberPage() {
         </div>
       </header>
 
+      <section className="mb-8">
+        <h2 className="font-display text-xl font-semibold mb-1">
+          {lang === "ja" ? "会派と異なる投票" : "Votes against party majority"}
+        </h2>
+        <p className="text-xs text-muted-foreground mb-3">
+          {lang === "ja"
+            ? "同じ会派の過半数と異なる投票をした議案を抽出しています(会派内の有効投票3票以上、過半数あり)。"
+            : "Bills where this member's vote diverged from their caucus majority (≥3 substantive party votes, clear majority)."}
+        </p>
+        {outliers.length === 0 ? (
+          <div className="rounded-lg border border-border bg-card p-4 text-sm text-muted-foreground">
+            {lang === "ja" ? "会派の多数派と異なる投票は見つかりませんでした。" : "No outlier votes found."}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-border bg-card overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-secondary text-secondary-foreground text-xs uppercase tracking-wide">
+                <tr>
+                  <th className="text-left px-4 py-2.5 font-medium">{t("bill")}</th>
+                  <th className="text-right px-3 py-2.5 font-medium">{lang === "ja" ? "本人" : "Member"}</th>
+                  <th className="text-right px-4 py-2.5 font-medium">{lang === "ja" ? "会派多数" : "Party majority"}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {outliers.map(({ bill, choice, partyChoice, partyShare }) => (
+                  <tr key={bill.id} className="border-t border-border">
+                    <td className="px-4 py-3">
+                      <Link to="/vote/$id" params={{ id: bill.id }} className="font-medium hover:text-primary hover:underline">
+                        {bill.title || bill.id}
+                      </Link>
+                      <div className="text-xs text-muted-foreground mt-0.5">{bill.date}</div>
+                    </td>
+                    <td className="px-3 py-3 text-right">
+                      <span className="inline-block px-2 py-0.5 rounded text-white text-xs font-semibold uppercase tracking-wide min-w-[56px] text-center"
+                            style={{ background: `var(${CHOICE_LABEL[choice].varName})` }}>
+                        {CHOICE_LABEL[choice][lang]}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <span className="inline-block px-2 py-0.5 rounded text-white text-xs font-semibold uppercase tracking-wide min-w-[56px] text-center"
+                            style={{ background: `var(${CHOICE_LABEL[partyChoice].varName})` }}>
+                        {CHOICE_LABEL[partyChoice][lang]}
+                      </span>
+                      <div className="text-[0.65rem] text-muted-foreground tabular-nums mt-0.5">{partyShare}</div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+
       <section className="mb-6">
         <h2 className="font-display text-xl font-semibold mb-3">{t("voting_record")}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
