@@ -1,0 +1,3082 @@
+{
+  "session": "221",
+  "committees": [
+    {
+      "code": "0063",
+      "nameJa": "内閣委員会",
+      "slug": "naikaku",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7013019",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016010",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016035",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010055",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016023",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022027",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010001",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016019",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5998036",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010048",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022009",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019020",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025035",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022017",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025036",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010029",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7016026",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025013",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7001001",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025008",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0064",
+      "nameJa": "総務委員会",
+      "slug": "soumu",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7007071",
+          "role": "委員長",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022031",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022033",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019016",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016009",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025039",
+          "role": "理事",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022012",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025037",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010038",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013044",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010046",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025063",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019008",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016015",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025002",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025015",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025029",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7016037",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025014",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025046",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7016007",
+          "role": "委員",
+          "partyShort": "沖縄"
+        },
+        {
+          "id": "7025005",
+          "role": "委員",
+          "partyShort": "みら"
+        },
+        {
+          "id": "7023002",
+          "role": "委員",
+          "partyShort": "無所属"
+        }
+      ]
+    },
+    {
+      "code": "0065",
+      "nameJa": "法務委員会",
+      "slug": "houmu",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016005",
+          "role": "委員長",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022020",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016017",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019006",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7007022",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010052",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7001006",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004012",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019023",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025053",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5992051",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025007",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7007055",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025041",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019012",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025003",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7004045",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025020",
+          "role": "委員",
+          "partyShort": "保守"
+        },
+        {
+          "id": "7003005",
+          "role": "委員",
+          "partyShort": "無所属"
+        },
+        {
+          "id": "5998050",
+          "role": "委員",
+          "partyShort": "無所属"
+        }
+      ]
+    },
+    {
+      "code": "0066",
+      "nameJa": "外交防衛委員会",
+      "slug": "gaikou-bouei",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016020",
+          "role": "委員長",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7019005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7012005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007006",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013046",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025019",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7022003",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022004",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022007",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022018",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5986024",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013048",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019024",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004050",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7001027",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025060",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013050",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025061",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7016042",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "5998049",
+          "role": "委員",
+          "partyShort": "社民"
+        }
+      ]
+    },
+    {
+      "code": "0067",
+      "nameJa": "財政金融委員会",
+      "slug": "zaisei-kinyuu",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7013053",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022034",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022035",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001047",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019042",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022006",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025026",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5998030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019026",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007044",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013049",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010050",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022021",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025011",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025048",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013028",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7016003",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7016014",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025030",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025054",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "5998022",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7007017",
+          "role": "委員",
+          "partyShort": "れ新"
+        },
+        {
+          "id": "7025006",
+          "role": "委員",
+          "partyShort": "社民"
+        }
+      ]
+    },
+    {
+      "code": "0068",
+      "nameJa": "文教科学委員会",
+      "slug": "bunkyou-kagaku",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7019017",
+          "role": "委員長",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022003",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016006",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022013",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7010013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010020",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019018",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004033",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5995054",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025057",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019013",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022019",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010027",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025055",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019021",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7004036",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022029",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025024",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7013017",
+          "role": "委員",
+          "partyShort": "共産"
+        }
+      ]
+    },
+    {
+      "code": "0069",
+      "nameJa": "厚生労働委員会",
+      "slug": "kousei-roudou",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016012",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013010",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016021",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010024",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019025",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010003",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025017",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022015",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013016",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010045",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007053",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010007",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025022",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025059",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025044",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019032",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025018",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022002",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025042",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025038",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025056",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025031",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7022026",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0070",
+      "nameJa": "農林水産委員会",
+      "slug": "nourin-suisan",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016034",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016004",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013022",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025049",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019003",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025016",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013006",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013001",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016022",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004046",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013060",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022040",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016025",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010036",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019040",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7007052",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019027",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010033",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025040",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025033",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7016011",
+          "role": "委員",
+          "partyShort": "共産"
+        }
+      ]
+    },
+    {
+      "code": "0071",
+      "nameJa": "経済産業委員会",
+      "slug": "keizai-sangyou",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016032",
+          "role": "委員長",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010018",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013021",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016018",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022024",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022036",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "5998003",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022008",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019011",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001037",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007054",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004057",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025052",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022039",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013054",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010006",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7017001",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025064",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025028",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025050",
+          "role": "委員",
+          "partyShort": "保守"
+        }
+      ]
+    },
+    {
+      "code": "0072",
+      "nameJa": "国土交通委員会",
+      "slug": "kokudo-koutsuu",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7022025",
+          "role": "委員長",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013032",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004060",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025025",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7016036",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7014002",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013024",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022041",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004062",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025062",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7021002",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010053",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013011",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025051",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7004043",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025045",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7022005",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025004",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7022014",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7019015",
+          "role": "委員",
+          "partyShort": "れ新"
+        },
+        {
+          "id": "7019031",
+          "role": "委員",
+          "partyShort": "無所属"
+        },
+        {
+          "id": "7016033",
+          "role": "委員",
+          "partyShort": "無所属"
+        }
+      ]
+    },
+    {
+      "code": "0073",
+      "nameJa": "環境委員会",
+      "slug": "kankyou",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7010009",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007061",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022042",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022016",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7019007",
+          "role": "理事",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7007007",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010008",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022028",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004056",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001046",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007041",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022037",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004058",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025009",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013045",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025047",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025012",
+          "role": "委員",
+          "partyShort": "れ新"
+        },
+        {
+          "id": "7025027",
+          "role": "委員",
+          "partyShort": "沖縄"
+        },
+        {
+          "id": "7025032",
+          "role": "委員",
+          "partyShort": "みら"
+        },
+        {
+          "id": "7025058",
+          "role": "委員",
+          "partyShort": "無所属"
+        }
+      ]
+    },
+    {
+      "code": "0062",
+      "nameJa": "国家基本政策委員会",
+      "slug": "kokka-kihon",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7016003",
+          "role": "委員長",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7001046",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010048",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016025",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022015",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019018",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013049",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013060",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022040",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010027",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004058",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7001027",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025060",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010033",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7004043",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010029",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025024",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "5998022",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025005",
+          "role": "委員",
+          "partyShort": "みら"
+        }
+      ]
+    },
+    {
+      "code": "0027",
+      "nameJa": "予算委員会",
+      "slug": "yosan",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7010046",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7014002",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022010",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010043",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019034",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004050",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013054",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013045",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013028",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022002",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7016004",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022020",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016017",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022031",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016035",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025057",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022041",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022042",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025063",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019003",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022039",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025059",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016006",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025035",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019025",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025051",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022017",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025029",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025047",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025045",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7022016",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025042",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025003",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025030",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025039",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7001001",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025012",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0028",
+      "nameJa": "決算委員会",
+      "slug": "kessan",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7007044",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013006",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022018",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010038",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7021002",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016037",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7019012",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025017",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025026",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004033",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013032",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022033",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007061",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7012005",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004062",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019016",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025022",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022019",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010053",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025011",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025015",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022027",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022006",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025036",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7016026",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025028",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025061",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7013017",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025008",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0061",
+      "nameJa": "行政監視委員会",
+      "slug": "gyousei-kanshi",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7019032",
+          "role": "委員長",
+          "partyShort": "民主"
+        },
+        {
+          "id": "5998003",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013001",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5998036",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019024",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7017001",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025038",
+          "role": "理事",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025033",
+          "role": "理事",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7022004",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019005",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016012",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019011",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013019",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013022",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001037",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5995054",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007006",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025007",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016018",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025052",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025025",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025041",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025055",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7016020",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022005",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7022013",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7016011",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7007017",
+          "role": "委員",
+          "partyShort": "れ新"
+        },
+        {
+          "id": "7025020",
+          "role": "委員",
+          "partyShort": "保守"
+        },
+        {
+          "id": "7016007",
+          "role": "委員",
+          "partyShort": "沖縄"
+        },
+        {
+          "id": "5998049",
+          "role": "委員",
+          "partyShort": "社民"
+        }
+      ]
+    },
+    {
+      "code": "0029",
+      "nameJa": "議院運営委員会",
+      "slug": "giin-unei",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7010001",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022007",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016022",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013044",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010007",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019013",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013011",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7019027",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7016014",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025013",
+          "role": "理事",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010018",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025037",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025049",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025062",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022009",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022037",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019040",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025002",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022024",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025018",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025014",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025046",
+          "role": "委員",
+          "partyShort": "参政"
+        }
+      ]
+    },
+    {
+      "code": "0031",
+      "nameJa": "懲罰委員会",
+      "slug": "choubatsu",
+      "kind": "standing",
+      "members": [
+        {
+          "id": "7025054",
+          "role": "委員長",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7004046",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001006",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007007",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004012",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007055",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004060",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019042",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010003",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7013050",
+          "role": "委員",
+          "partyShort": "維新"
+        }
+      ]
+    },
+    {
+      "code": "0436",
+      "nameJa": "災害対策及び東日本大震災復興特別委員会",
+      "slug": "saigai-shinsai",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7019021",
+          "role": "委員長",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007061",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019008",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025009",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025029",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019011",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025017",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025026",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5998030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "5995054",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022031",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022033",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025057",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025063",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019017",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022019",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025052",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013054",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019032",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025048",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7017001",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7019012",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7022036",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7019007",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025033",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7004045",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7022026",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0437",
+      "nameJa": "沖縄・北方問題及び地方に関する特別委員会",
+      "slug": "okinawa-hoppou-chihou",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7019040",
+          "role": "委員長",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016010",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016021",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010036",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025060",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013006",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013001",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019023",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019026",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019013",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016032",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010003",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022017",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022002",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025019",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7019007",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7016011",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7025008",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0435",
+      "nameJa": "政治改革に関する特別委員会",
+      "slug": "seiji-kaikaku",
+      "kind": "special",
+      "members": [
+        {
+          "id": "5998030",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7014002",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010038",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022033",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010024",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022024",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010006",
+          "role": "理事",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010029",
+          "role": "理事",
+          "partyShort": "維新"
+        },
+        {
+          "id": "5998003",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016004",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022007",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022010",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013022",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022020",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016017",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013032",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013044",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022041",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010055",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016015",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7019020",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7021002",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004058",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7007071",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025002",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025016",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025025",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7013028",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7010052",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025040",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025056",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025061",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7016042",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7019015",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0415",
+      "nameJa": "北朝鮮による拉致問題等に関する特別委員会",
+      "slug": "rachi",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7010045",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022018",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7012005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022037",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7007022",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7016021",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019018",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7016043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004013",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022042",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019006",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7001047",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025035",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7016036",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022029",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025028",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025054",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7025020",
+          "role": "委員",
+          "partyShort": "保守"
+        },
+        {
+          "id": "7025050",
+          "role": "委員",
+          "partyShort": "保守"
+        },
+        {
+          "id": "5998049",
+          "role": "委員",
+          "partyShort": "社民"
+        }
+      ]
+    },
+    {
+      "code": "0438",
+      "nameJa": "政府開発援助及び国際協力・人道支援等に関する特別委員会",
+      "slug": "oda-jindou",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7007053",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013010",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010018",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007055",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7022027",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022004",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022007",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7004057",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7001046",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7007006",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7010007",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7016018",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025044",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022006",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7019027",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7022005",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025014",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025013",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7007017",
+          "role": "委員",
+          "partyShort": "れ新"
+        }
+      ]
+    },
+    {
+      "code": "0440",
+      "nameJa": "デジタル社会の形成及び人工知能の活用等に関する特別委員会",
+      "slug": "digital-ai",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7007052",
+          "role": "委員長",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7010005",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7010048",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022023",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025041",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7022003",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7013022",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022020",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019030",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022028",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022040",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025007",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025023",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025059",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025047",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7016037",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025045",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7016026",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025039",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7013017",
+          "role": "委員",
+          "partyShort": "共産"
+        }
+      ]
+    },
+    {
+      "code": "0439",
+      "nameJa": "消費者問題に関する特別委員会",
+      "slug": "shouhisha",
+      "kind": "special",
+      "members": [
+        {
+          "id": "7004056",
+          "role": "委員長",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022034",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7022035",
+          "role": "理事",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7019016",
+          "role": "理事",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7013011",
+          "role": "理事",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025034",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025037",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025043",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025049",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025062",
+          "role": "委員",
+          "partyShort": "自民"
+        },
+        {
+          "id": "7025022",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7004050",
+          "role": "委員",
+          "partyShort": "立憲"
+        },
+        {
+          "id": "7025051",
+          "role": "委員",
+          "partyShort": "民主"
+        },
+        {
+          "id": "7025036",
+          "role": "委員",
+          "partyShort": "公明"
+        },
+        {
+          "id": "7025064",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025042",
+          "role": "委員",
+          "partyShort": "維新"
+        },
+        {
+          "id": "7025038",
+          "role": "委員",
+          "partyShort": "参政"
+        },
+        {
+          "id": "7001001",
+          "role": "委員",
+          "partyShort": "共産"
+        },
+        {
+          "id": "7016007",
+          "role": "委員",
+          "partyShort": "沖縄"
+        },
+        {
+          "id": "7025005",
+          "role": "委員",
+          "partyShort": "みら"
+        }
+      ]
+    }
+  ]
+}
