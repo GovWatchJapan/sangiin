@@ -117,6 +117,28 @@ function MemberPage() {
             {member.absenceRate && <span>{t("absence_rate")}: <span className="tabular-nums">{member.absenceRate}</span></span>}
             {member.factionChanged && <span className="text-amber-600 dark:text-amber-400">⚠ {t("faction_changed")}</span>}
           </div>
+          {(() => {
+            const memberships = committees?.byMember.get(member.id) ?? [];
+            if (memberships.length === 0) return null;
+            return (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {memberships.map(({ committee, role }) => (
+                  <Link
+                    key={committee.slug}
+                    to="/committee/$slug"
+                    params={{ slug: committee.slug }}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-border bg-card text-[0.7rem] text-foreground hover:border-primary hover:text-primary transition-colors"
+                    title={role}
+                  >
+                    {role !== "委員" && (
+                      <span className="text-[0.6rem] font-semibold text-primary">{role}</span>
+                    )}
+                    <span>{committee.nameJa}</span>
+                  </Link>
+                ))}
+              </div>
+            );
+          })()}
           {member.profileUrl && (
             <a href={member.profileUrl} target="_blank" rel="noreferrer"
                className="mt-2 inline-block text-xs text-primary hover:underline">
