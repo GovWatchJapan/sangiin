@@ -16,6 +16,7 @@ import { Route as SessionsSessionRouteImport } from './routes/sessions.$session'
 import { Route as PartySlugRouteImport } from './routes/party.$slug'
 import { Route as MemberIdRouteImport } from './routes/member.$id'
 import { Route as DistrictSlugRouteImport } from './routes/district.$slug'
+import { Route as CommitteeSlugRouteImport } from './routes/committee.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,9 +53,15 @@ const DistrictSlugRoute = DistrictSlugRouteImport.update({
   path: '/district/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommitteeSlugRoute = CommitteeSlugRouteImport.update({
+  id: '/committee/$slug',
+  path: '/committee/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/committee/$slug': typeof CommitteeSlugRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
   '/party/$slug': typeof PartySlugRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/committee/$slug': typeof CommitteeSlugRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
   '/party/$slug': typeof PartySlugRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/committee/$slug': typeof CommitteeSlugRoute
   '/district/$slug': typeof DistrictSlugRoute
   '/member/$id': typeof MemberIdRoute
   '/party/$slug': typeof PartySlugRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/committee/$slug'
     | '/district/$slug'
     | '/member/$id'
     | '/party/$slug'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/committee/$slug'
     | '/district/$slug'
     | '/member/$id'
     | '/party/$slug'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/committee/$slug'
     | '/district/$slug'
     | '/member/$id'
     | '/party/$slug'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommitteeSlugRoute: typeof CommitteeSlugRoute
   DistrictSlugRoute: typeof DistrictSlugRoute
   MemberIdRoute: typeof MemberIdRoute
   PartySlugRoute: typeof PartySlugRoute
@@ -172,11 +185,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DistrictSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/committee/$slug': {
+      id: '/committee/$slug'
+      path: '/committee/$slug'
+      fullPath: '/committee/$slug'
+      preLoaderRoute: typeof CommitteeSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommitteeSlugRoute: CommitteeSlugRoute,
   DistrictSlugRoute: DistrictSlugRoute,
   MemberIdRoute: MemberIdRoute,
   PartySlugRoute: PartySlugRoute,
