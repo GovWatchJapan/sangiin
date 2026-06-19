@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { loadDataset, type VoteChoice } from "@/lib/data";
+import { loadCommittees } from "@/lib/committees";
 import { PREF_BY_JA } from "@/lib/prefectures";
 import { partyColor, partyLabel } from "@/lib/parties";
 import { useI18n } from "@/lib/i18n";
@@ -25,6 +26,7 @@ function MemberPage() {
   const { id } = Route.useParams();
   const { lang, t } = useI18n();
   const { data, isLoading } = useQuery({ queryKey: ["dataset"], queryFn: loadDataset, staleTime: Infinity });
+  const { data: committees } = useQuery({ queryKey: ["committees"], queryFn: loadCommittees, staleTime: Infinity });
 
   const member = data?.members.find((m) => m.id === id);
   const pref = member ? PREF_BY_JA[member.districtJa] : undefined;
