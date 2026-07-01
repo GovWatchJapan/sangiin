@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { loadDataset, type VoteChoice } from "@/lib/data";
 import { loadCommittees } from "@/lib/committees";
 import { PREF_BY_JA } from "@/lib/prefectures";
