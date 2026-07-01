@@ -224,6 +224,32 @@ function MemberPage() {
 
       <section className="mb-6">
         <h2 className="font-display text-xl font-semibold mb-3">{t("voting_record")}</h2>
+        {availableCommittees.length > 0 && (
+          <div className="mb-3 flex flex-wrap items-center gap-1.5">
+            <span className="text-[0.7rem] uppercase tracking-wide text-muted-foreground mr-1">
+              {lang === "ja" ? "委員会で絞込" : "Filter by committee"}:
+            </span>
+            {[
+              { slug: "all", name: lang === "ja" ? "すべて" : "All", n: allVotes.length },
+              ...availableCommittees,
+            ].map((c) => {
+              const active = committeeFilter === c.slug;
+              return (
+                <button
+                  key={c.slug}
+                  onClick={() => setCommitteeFilter(c.slug)}
+                  className={`px-2 py-0.5 rounded-full border text-[0.7rem] transition-colors ${
+                    active
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-foreground hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  {c.name} <span className="tabular-nums opacity-75">({c.n})</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
           {(["yea","nay","abstain"] as VoteChoice[]).map((c) => (
             <div key={c} className="rounded-md border border-border bg-card p-3 text-center">
