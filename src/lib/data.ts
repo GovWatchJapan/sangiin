@@ -22,7 +22,19 @@ export type Bill = {
   dateKey: string;       // YYYYMMDD numeric for sorting (best-effort)
   title: string;
   sangiinUrl: string;
+  committeeSlug?: string; // resolved via bill_committees.json when available
 };
+
+/** Normalize a bill title so titles from different sangiin pages can be matched. */
+export function normalizeBillTitle(s: string): string {
+  return (s ?? "")
+    .replace(/\u3000/g, " ")
+    .replace(/^日程第[０-９0-9〇一二三四五六七八九十百千]+\s*/, "")
+    .replace(/（[^（）]*）\s*$/g, "")
+    .replace(/\([^()]*\)\s*$/g, "")
+    .replace(/\s+/g, "")
+    .trim();
+}
 
 export type Vote = {
   billId: string;
@@ -165,6 +177,23 @@ export function loadDataset(): Promise<Dataset> {
     for (const r of results) {
       for (const b of r.bills) if (!billMap.has(b.id)) billMap.set(b.id, b);
       allVotes.push(...r.votes);
+    }
+
+    // Load bill → committee mapping (scraped from sangiin 付託委員会別一覧).
+    try {
+      const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+      const res = await fetch(`${base}/data/bill_committees.json`);
+      if (res.ok) {
+        const map = (await res.json()) as Record<string, Record<string, string>>;
+        for (const b of billMap.values()) {
+          const sess = map[b.session];
+          if (!sess) continue;
+          const slug = sess[normalizeBillTitle(b.title)];
+          if (slug) b.committeeSlug = slug;
+        }
+      }
+    } catch (e) {
+      console.warn("bill_committees.json not loaded", e);
     }
 
     // Only show members from the latest session (largest session number).

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { loadDataset, type VoteChoice } from "@/lib/data";
 import { loadCommittees } from "@/lib/committees";
 import { PREF_BY_JA } from "@/lib/prefectures";
@@ -31,7 +31,9 @@ function MemberPage() {
   const member = data?.members.find((m) => m.id === id);
   const pref = member ? PREF_BY_JA[member.districtJa] : undefined;
 
-  const votes = useMemo(() => {
+  const [committeeFilter, setCommitteeFilter] = useState<string>("all");
+
+  const allVotes = useMemo(() => {
     if (!data || !member) return [];
     const inner = data.voteIndex.get(member.id);
     if (!inner) return [];
@@ -39,6 +41,25 @@ function MemberPage() {
       .filter((b) => inner.has(b.id))
       .map((b) => ({ bill: b, choice: inner.get(b.id)! }));
   }, [data, member]);
+
+  const votes = useMemo(() => {
+    if (committeeFilter === "all") return allVotes;
+    if (committeeFilter === "none") return allVotes.filter((v) => !v.bill.committeeSlug);
+    return allVotes.filter((v) => v.bill.committeeSlug === committeeFilter);
+  }, [allVotes, committeeFilter]);
+
+  // Committees represented in this member's voting history (for the filter chips).
+  const availableCommittees = useMemo(() => {
+    if (!committees) return [];
+    const counts = new Map<string, number>();
+    for (const { bill } of allVotes) {
+      if (!bill.committeeSlug) continue;
+      counts.set(bill.committeeSlug, (counts.get(bill.committeeSlug) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .map(([slug, n]) => ({ slug, n, name: committees.bySlug.get(slug)?.nameJa ?? slug }))
+      .sort((a, b) => b.n - a.n);
+  }, [allVotes, committees]);
 
   const tally = useMemo(() => {
     const t: Record<VoteChoice, number> = { yea: 0, nay: 0, abstain: 0, absent: 0, standing: 0 };
@@ -203,6 +224,32 @@ function MemberPage() {
 
       <section className="mb-6">
         <h2 className="font-display text-xl font-semibold mb-3">{t("voting_record")}</h2>
+        {availableCommittees.length > 0 && (
+          <div className="mb-3 flex flex-wrap items-center gap-1.5">
+            <span className="text-[0.7rem] uppercase tracking-wide text-muted-foreground mr-1">
+              {lang === "ja" ? "委員会で絞込" : "Filter by committee"}:
+            </span>
+            {[
+              { slug: "all", name: lang === "ja" ? "すべて" : "All", n: allVotes.length },
+              ...availableCommittees,
+            ].map((c) => {
+              const active = committeeFilter === c.slug;
+              return (
+                <button
+                  key={c.slug}
+                  onClick={() => setCommitteeFilter(c.slug)}
+                  className={`px-2 py-0.5 rounded-full border text-[0.7rem] transition-colors ${
+                    active
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-foreground hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  {c.name} <span className="tabular-nums opacity-75">({c.n})</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
           {(["yea","nay","abstain"] as VoteChoice[]).map((c) => (
             <div key={c} className="rounded-md border border-border bg-card p-3 text-center">
