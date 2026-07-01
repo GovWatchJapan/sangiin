@@ -22,7 +22,19 @@ export type Bill = {
   dateKey: string;       // YYYYMMDD numeric for sorting (best-effort)
   title: string;
   sangiinUrl: string;
+  committeeSlug?: string; // resolved via bill_committees.json when available
 };
+
+/** Normalize a bill title so titles from different sangiin pages can be matched. */
+export function normalizeBillTitle(s: string): string {
+  return (s ?? "")
+    .replace(/\u3000/g, " ")
+    .replace(/^日程第[０-９0-9〇一二三四五六七八九十百千]+\s*/, "")
+    .replace(/（[^（）]*）\s*$/g, "")
+    .replace(/\([^()]*\)\s*$/g, "")
+    .replace(/\s+/g, "")
+    .trim();
+}
 
 export type Vote = {
   billId: string;
