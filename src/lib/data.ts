@@ -179,6 +179,23 @@ export function loadDataset(): Promise<Dataset> {
       allVotes.push(...r.votes);
     }
 
+    // Load bill → committee mapping (scraped from sangiin 付託委員会別一覧).
+    try {
+      const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+      const res = await fetch(`${base}/data/bill_committees.json`);
+      if (res.ok) {
+        const map = (await res.json()) as Record<string, Record<string, string>>;
+        for (const b of billMap.values()) {
+          const sess = map[b.session];
+          if (!sess) continue;
+          const slug = sess[normalizeBillTitle(b.title)];
+          if (slug) b.committeeSlug = slug;
+        }
+      }
+    } catch (e) {
+      console.warn("bill_committees.json not loaded", e);
+    }
+
     // Only show members from the latest session (largest session number).
     // Older session CSVs are still parsed so historical votes/bills are
     // available, but the canonical roster is the most recent one.
