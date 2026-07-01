@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { loadDataset } from "@/lib/data";
+import { loadCommittees } from "@/lib/committees";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/sessions/$session")({
@@ -18,13 +19,31 @@ function SessionPage() {
   const { session } = Route.useParams();
   const { lang, t } = useI18n();
   const { data, isLoading } = useQuery({ queryKey: ["dataset"], queryFn: loadDataset, staleTime: Infinity });
+  const { data: committees } = useQuery({ queryKey: ["committees"], queryFn: loadCommittees, staleTime: Infinity });
   const [q, setQ] = useState("");
+  const [committeeFilter, setCommitteeFilter] = useState<string>("all");
+
+  const allBills = useMemo(() => data?.billsBySession.get(session) ?? [], [data, session]);
 
   const bills = useMemo(() => {
-    const all = data?.billsBySession.get(session) ?? [];
-    if (!q) return all;
-    return all.filter((b) => b.title.includes(q) || b.id.includes(q));
-  }, [data, session, q]);
+    let list = allBills;
+    if (committeeFilter === "none") list = list.filter((b) => !b.committeeSlug);
+    else if (committeeFilter !== "all") list = list.filter((b) => b.committeeSlug === committeeFilter);
+    if (q) list = list.filter((b) => b.title.includes(q) || b.id.includes(q));
+    return list;
+  }, [allBills, q, committeeFilter]);
+
+  const availableCommittees = useMemo(() => {
+    if (!committees) return [];
+    const counts = new Map<string, number>();
+    for (const b of allBills) {
+      if (!b.committeeSlug) continue;
+      counts.set(b.committeeSlug, (counts.get(b.committeeSlug) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .map(([slug, n]) => ({ slug, n, name: committees.bySlug.get(slug)?.nameJa ?? slug }))
+      .sort((a, b) => b.n - a.n);
+  }, [allBills, committees]);
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
