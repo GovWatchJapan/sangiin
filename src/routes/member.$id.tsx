@@ -31,7 +31,9 @@ function MemberPage() {
   const member = data?.members.find((m) => m.id === id);
   const pref = member ? PREF_BY_JA[member.districtJa] : undefined;
 
-  const votes = useMemo(() => {
+  const [committeeFilter, setCommitteeFilter] = useState<string>("all");
+
+  const allVotes = useMemo(() => {
     if (!data || !member) return [];
     const inner = data.voteIndex.get(member.id);
     if (!inner) return [];
@@ -39,6 +41,25 @@ function MemberPage() {
       .filter((b) => inner.has(b.id))
       .map((b) => ({ bill: b, choice: inner.get(b.id)! }));
   }, [data, member]);
+
+  const votes = useMemo(() => {
+    if (committeeFilter === "all") return allVotes;
+    if (committeeFilter === "none") return allVotes.filter((v) => !v.bill.committeeSlug);
+    return allVotes.filter((v) => v.bill.committeeSlug === committeeFilter);
+  }, [allVotes, committeeFilter]);
+
+  // Committees represented in this member's voting history (for the filter chips).
+  const availableCommittees = useMemo(() => {
+    if (!committees) return [];
+    const counts = new Map<string, number>();
+    for (const { bill } of allVotes) {
+      if (!bill.committeeSlug) continue;
+      counts.set(bill.committeeSlug, (counts.get(bill.committeeSlug) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .map(([slug, n]) => ({ slug, n, name: committees.bySlug.get(slug)?.nameJa ?? slug }))
+      .sort((a, b) => b.n - a.n);
+  }, [allVotes, committees]);
 
   const tally = useMemo(() => {
     const t: Record<VoteChoice, number> = { yea: 0, nay: 0, abstain: 0, absent: 0, standing: 0 };
