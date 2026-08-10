@@ -22,6 +22,7 @@ export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
       >
         {tiles.map(p => {
           const isHirei = p.slug === "hirei";
+          const isOkinawa = p.slug === "okinawa";
           return (
             <Link
               key={p.slug}
@@ -35,6 +36,24 @@ export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
               }}
               title={isHirei ? t("proportional") : `${p.ja} / ${p.en}`}
             >
+              {isOkinawa && (
+                <svg
+                  className="absolute pointer-events-none overflow-visible text-foreground/40"
+                  style={{ left: "-420%", top: "-40%", width: "540%", height: "180%" }}
+                  viewBox="0 0 540 180"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M540 22 H150 L60 96 V180"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeDasharray="6 5"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+              )}
               <span className="leading-tight text-center px-0.5 truncate">
                 {isHirei ? t("proportional") : (lang === "ja" ? p.ja : p.en)}
               </span>
@@ -47,6 +66,7 @@ export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
             </Link>
           );
         })}
+
       </div>
     </div>
   );
