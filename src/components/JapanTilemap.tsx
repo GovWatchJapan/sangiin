@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PREFECTURES, REGION_COLOR } from "@/lib/prefectures";
 import { useI18n } from "@/lib/i18n";
 
-const GRID_COLS = 11;
+const GRID_COLS = 12;
 const GRID_ROWS = 12;
 
 export function JapanTilemap({ counts }: { counts?: Record<string, number> }) {
