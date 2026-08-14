@@ -1,1 +1,0 @@
-import{j as t}from"./index-2DHq6Rry.js";const n=()=>t.jsx("div",{className:"max-w-2xl mx-auto p-10 text-center text-muted-foreground",children:"該当する選挙区がありません / District not found"});export{n as notFoundComponent};
