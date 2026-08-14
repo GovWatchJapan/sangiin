@@ -8,7 +8,7 @@ export function SiteHeader() {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3 group">
           <span className="w-9 h-9 rounded-md bg-primary text-primary-foreground grid place-items-center font-display text-xl font-bold shadow-sm">
-            選
+            参
           </span>
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg sm:text-xl font-semibold">{t("site_title")}</span>

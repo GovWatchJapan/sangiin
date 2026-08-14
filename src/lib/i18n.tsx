@@ -5,8 +5,8 @@ export type Lang = "ja" | "en";
 type Dict = Record<string, { ja: string; en: string }>;
 
 export const T: Dict = {
-  site_title: { ja: "国会ウォッチ", en: "Diet Watch Japan" },
-  site_tag: { ja: "参議院議員の投票行動を市民の手に", en: "Tracking how Japan's councillors vote" },
+  site_title: { ja: "参議院・国会ウォッチ", en: "Diet Watch Japan" },
+  site_tag: { ja: "参議院議員の投票行動をトラッキング", en: "Tracking how Japan's councillors vote" },
   pick_district: { ja: "選挙区を選んでください", en: "Select a district" },
   proportional: { ja: "比例代表", en: "Proportional" },
   members: { ja: "議員", en: "Members" },
@@ -15,7 +15,7 @@ export const T: Dict = {
   term_end: { ja: "任期満了", en: "Term ends" },
   voting_record: { ja: "投票記録", en: "Voting record" },
   back: { ja: "戻る", en: "Back" },
-  source: { ja: "出典", en: "Source" },
+  source: { ja: "データ元", en: "Source" },
   yea: { ja: "賛成", en: "Yea" },
   nay: { ja: "反対", en: "Nay" },
   abstain: { ja: "投票なし", en: "No vote" },
@@ -35,8 +35,8 @@ export const T: Dict = {
   total_members: { ja: "議員数", en: "Members" },
   parties_breakdown: { ja: "会派別内訳", en: "By party" },
   data_note: {
-    ja: "※ データは参議院公式ウェブサイトから抽出されたCSV(GovWatchJapan/congressdata)に基づきます。",
-    en: "Note: Data is from CSVs extracted from sangiin.go.jp (GovWatchJapan/congressdata).",
+    ja: "※ データは参議院公式ウェブサイトから抽出されたデータベース(GovWatchJapan/congressdata)に基づきます。",
+    en: "Note: Data is from our database extracted from sangiin.go.jp (GovWatchJapan/congressdata).",
   },
   search_placeholder: { ja: "議員名で検索…", en: "Search by name…" },
   absence_rate: { ja: "欠席率", en: "Absence rate" },
