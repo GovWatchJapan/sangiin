@@ -1,7 +1,7 @@
-# Diet Watch Japan / 国会ウォッチ
+# Diet Watch Japan / 参議院・国会ウォッチ
 
 Static visualization of the Japanese House of Councillors' plenary voting
-records. Data is pre-scraped CSV from
+records and other activities. Data is pre-scraped CSV from
 [GovWatchJapan/congressdata](https://github.com/GovWatchJapan/congressdata)
 and bundled into the site at build time (see `public/data/votes_*.csv`).
 
